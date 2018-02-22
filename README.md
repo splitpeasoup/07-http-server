@@ -25,8 +25,6 @@ module files.
 ## Feature Tasks  
 For this assignment you will be building a HTTP server. 
 
-#### Body Parser Module
-#### URL Parser Module
 #### Server Module 
 The server module is responsible for creating an http server defining all
 route behavior and exporting an interface for starting and stopping the
