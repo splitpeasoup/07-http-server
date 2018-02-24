@@ -80,12 +80,15 @@ text query the cow message should say `'I need something good to say!'`.
 </html>
 ```
 
-###### GET /api/cowsay?text={message}
-When a client makes a POST request to /api/cowsay it should send JSON that
-includes `{"text": "<message>"}`. The server should respond with a JSON body
-`{"content": "<cowsay cow>"}`.
+###### POST /api/cowsay 
+When a client makes a POST request to `/api/cowsay` it should send JSON that
+includes `{"text": "<message>"}`. Notice that there's no URL query parameters
+in a POST request. POST requests include JSON data in the body of the request.
 
-A response for a valid Requests should have a status code of 200 and the JSON body   
+See how the bodies of POST requests are structured [here](https://stackoverflow.com/a/14551219).
+
+The server should respond with a JSON body `{"content": "<cowsay cow>"}`.     
+A response for a valid request should have a status code of 200 and the JSON body   
 
 ```json 
 {
@@ -100,11 +103,6 @@ A response for an invalid request should have a status code of 400 and the JSON 
   "error": "invalid request: text query required"
 }
 ```
-
-###### POST /api/cowsay 
-When a client makes a POST request to /api/cowsay it should send JSON that
-includes `{"text": "<message>"}`. The server should respond with a JSON body
-`{"content": "<cowsay cow>"}`.
 
 | Request | Response Status Code | Response Type | Response Body |
 | -- | -- | -- | -- |
