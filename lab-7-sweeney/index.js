@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 function bodyParser(req, cb){
   if(req.method === 'POST'){
     let body = '';
-    req.on('data', (buf)=> {
+    req.on('data', (buf) => {
       body += buf.toString();
     });
     req.on('end',() => cb(null, body));
@@ -21,32 +21,31 @@ function bodyParser(req, cb){
   }
 }
 
-const server = http.createServer((req, res) =>{
+const server = http.createServer((req, res) => {
   req.url = url.parse(req.url);
   req.url.query = querystring.parse(req.url.query);
   console.log('url', req.url.query);
   if(req.method === 'GET'){
     if(req.url.pathname === '/'){
       res.writeHead(200, {'Content-Type':'text/html'});
-      res.write(
-        <html>
+      res.write(`
       <head>
-        <title> COWSAY </title>
-        </head>
-      <body>
-        <header>
-          <nav>
-            <ul>
-              <li><a href = "/cowsay">COWSAY</a></li>
-              </ul>
-            </nav>
-          <header>
-          <main>
-            interactive server
-          </main>
-        </body>
-      </html>
-      );
+    <title> cowsay </title>  
+  </head>
+  <body>
+   <header>
+     <nav>
+       <ul> 
+         <li><a href="/cowsay">cowsay</a></li>
+       </ul>
+     </nav>
+   </header>
+   <main>
+     interactive cowsay http server
+   </main>
+  </body>
+
+`);
       res.end();
       }
       if(req.url.pathname === '/cowsay'){
@@ -63,7 +62,7 @@ const server = http.createServer((req, res) =>{
         res.writeHead(200,{
           'Content-Type':'text/html'
         });
-        res.write(
+        res.write(`
           <html>
         <head>
           <title> COWSAY</title>
@@ -75,7 +74,7 @@ const server = http.createServer((req, res) =>{
           </pre>
         </body>
       </html>
-       );
+       `);
        res.end();
 
       }

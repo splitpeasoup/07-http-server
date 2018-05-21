@@ -11,5 +11,8 @@
     "test": "jest"
   },
   "author": "caitlin sweeney",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cowsay": "^1.3.0"
+  }
 }
